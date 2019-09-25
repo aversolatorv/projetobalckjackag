@@ -49,4 +49,5 @@ while d!=0:
         d=d+a
         print("Vc ganhou!")
         continue
+        
     
