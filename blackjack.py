@@ -11,40 +11,52 @@ mc=[] #mão croupier
 d=1000
 
 m="carta"
-print("Bem-vindo à mesa de Blackjack!")
+print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 while d!=0:
     print("Você tem R$ ", d)
     a=int(input('Aposte um valor inteiro: '))
+    if a>d:
+        print("Não aposte mais dinheiro do que tem!")
+        print("Você foi penalizado em: ", 0.1*d, "por tentar trapacear!")
+        d=d-(0.1*d)
+        continue
     cj1=random.choice(baralho) #cj = carta do jogador
     cj2=random.choice(baralho)
-    mj.append(cj1, cj2)
+    mj.append(cj1)
+    mj.append(cj2)
     if sum(mj)>21:
         a=1
     if sum(mj)>21:
-        print("Você estorou!")
+        print("Você estorou", "com as cartas", mj[0], mj[1], "!")
         d=d-a
         continue
     if sum(mj)==21:
         d=d+((1.5)*a)
-        print("Parabéns, você ganhou um Blackjack ", "com as cartas", cj1, cj2, "!")
+        print("Parabéns, você ganhou um Blackjack ", "com as cartas", mj[0], "e", mj[1], "!")
         continue
-    print("Você tem as cartas: ", mj[1], "e", mj[2], "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
-    while m!= "continuar":
-        m=input("Responda com continuar ou carta: ")
-        mj.append(random.choice(baralho))
-        if sum(mj)>21:
-            a=1
-        if sum(mj)>21:
-            print("Você estorou!")
-        elif sum(mj)==21:
-            d=d+((1.5)*a)
-            print("Parabéns, você ganhou um Blackjack!")
-        break
-        print("Você tem as cartas: ", cj1, cj2, "e", cj3, "totalizando: ", cj1+cj2+cj3, ", você gostaria de mais uma carta ou quer continuar?")
+    print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
+    m=input("Responda com 'continuar' ou 'carta': ")
+    if m=="continuar":
+        while m!= "continuar":
+            m=input("Responda com 'continuar' ou 'carta': ")
+            mj.append(random.choice(baralho))
+            if sum(mj)>21:
+                a=1
+            if sum(mj)>21:
+                print("Você estorou", "com as cartas", mj, "!")
+                d=d-a
+                continue
+            elif sum(mj)==21:
+                d=d+((1.5)*a)
+                print("Parabéns, você ganhou um Blackjack!")
+                continue
+            print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
     cc1=random.choice(baralho) #cc = carta do croupier
     cc2=random.choice(baralho)
-    print("O croupier tem as cartas: ", cc1, "e", cc2, "totalizando: ", cc1+cc2)
-    if cc1+cc2>cj1+cj2:
+    mc.append(cc1)
+    mc.append(cc2)
+    print("O croupier tem as cartas: ", mc[0], "e", mc[1], "totalizando: ", sum(mc))
+    if sum(mc)>sum(mj):
         d=d-a
         print("Você perdeu.")
         continue
@@ -52,5 +64,7 @@ while d!=0:
         d=d+a
         print("Você ganhou!")
         continue
+    mj.clear()
+    mc.clear()
         
     
