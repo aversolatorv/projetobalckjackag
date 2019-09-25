@@ -13,6 +13,8 @@ d=1000
 m="carta"
 print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 while d!=0:
+    mj.clear()
+    mc.clear()
     print("Você tem R$ ", d)
     a=int(input('Aposte um valor inteiro: '))
     if a>d:
@@ -27,12 +29,12 @@ while d!=0:
     if sum(mj)>21:
         a=1
     if sum(mj)>21:
-        print("Você estorou", "com as cartas", mj[0], mj[1], "!")
+        print("Você estorou", "com as cartas", mj, "!")
         d=d-a
         continue
     if sum(mj)==21:
         d=d+((1.5)*a)
-        print("Parabéns, você ganhou um Blackjack ", "com as cartas", mj[0], "e", mj[1], "!")
+        print("Parabéns, você ganhou um Blackjack ", "com as cartas", mj, "!")
         continue
     print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
     m=input("Responda com 'continuar' ou 'carta': ")
@@ -55,16 +57,14 @@ while d!=0:
     cc2=random.choice(baralho)
     mc.append(cc1)
     mc.append(cc2)
-    print("O croupier tem as cartas: ", mc[0], "e", mc[1], "totalizando: ", sum(mc))
+    print("O croupier tem as cartas: ", mc, "totalizando: ", sum(mc))
     if sum(mc)>sum(mj):
         d=d-a
         print("Você perdeu.")
         continue
-    else:
+    elif sum(mj)>sum(mc):
         d=d+a
         print("Você ganhou!")
         continue
-    mj.clear()
-    mc.clear()
         
     
