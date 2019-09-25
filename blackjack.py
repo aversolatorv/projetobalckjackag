@@ -10,6 +10,7 @@ baralho=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4
 d=1000
 
 m="carta"
+print("Bem-vindo à mesa de Blackjack!")
 while d!=0:
     print("Você tem R$ ", d)
     a=int(input('Aposte um valor: '))
@@ -43,11 +44,11 @@ while d!=0:
     print("O croupier tem as cartas: ", cc1, "e", cc2, "totalizando: ", cc1+cc2)
     if cc1+cc2>cj1+cj2:
         d=d-a
-        print("Vc perdeu.")
+        print("Você perdeu.")
         continue
     else:
         d=d+a
-        print("Vc ganhou!")
+        print("Você ganhou!")
         continue
         
     
