@@ -29,8 +29,8 @@ while perg in ln:
         break
     else:
         continue
-'''
-if abc in ls:
+''' 
+if abc in ls: #Feature livre
   abcd=input("Você gostaria de jogar uma partida teste com tutorial?")
   if abcd in ln:
 '''
@@ -114,10 +114,12 @@ while d!=0:
             elif sum(mj)==21:
                 d=d+((1.5)*a)
                 print("Parabéns, você ganhou um Blackjack!")
-                continue
+                break
             print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
             m=input("Responda com 'continuar' ou 'carta': ")
     if sum(mj)>21:
+      continue
+    if sum(mj)==21:
       continue
     mc.append(random.choice(baralho))
     mc.append(random.choice(baralho))
