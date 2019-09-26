@@ -4,8 +4,8 @@ q=10
 j=10
 k=10
 a=11
-
-baralho=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4
+binicial=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
+baralho=(binicial)*4
 mj=[] #mão jogador
 mc=[] #mão croupier
 d=1000
@@ -15,11 +15,24 @@ print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 print("Regras e funcionamento:")
 print("1: Não aposte mais dinheiro do que tem!")
 print("2: Aposte valores inteiros!")
-print("3: Se suas cartas iniciais somarem 21 pts, você automaticamente ganha 1,5x o que apostou.")
-print("4: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas até atingir no min 17 pts.")
+print("3: Se suas cartas iniciais somarem 21 pontos, você automaticamente ganha 1,5x o que apostou.")
+print("4: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas até atingir no mínimo 17 pontos.")
 print("5: Se você ganhar/perder de outra forma você ganha/perde exatamente o que apostou.")
-print("6: Se quiser que o jogo pare, digite 'desisto'")
+print("6: Se quiser que o jogo pare, digite 'desisto'.")
 print("Se divirta!")
+q=0
+while q==0 or q>10:
+    q=int(input("Com quantos baralhos quer jogar? "))
+    if q>10:
+        print("O máximo são 10 baralhos!")
+    elif q>5:
+        print("O jogo pode ficar muito fácil, tem certeza de que quer continuar?")
+        inp=input("Sim/Não: ")
+    if inp=="Não":
+        continue
+    elif inp=="Sim":
+        break
+baralho=baralho*q
 while d!=0:
     mj.clear()
     mc.clear()
