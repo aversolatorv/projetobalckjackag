@@ -12,10 +12,17 @@ d=1000
 
 m="carta"
 print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
+print("Regras e funcionamento:")
+print("1: Não aposte mais dinheiro do que tem!")
+print("2: Aposte valores inteiros!")
+print("3: Se suas cartas iniciais somarem 21 pts, você automaticamente ganha 1,5x o que apostou.")
+print("4: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas até atingir no min 17 pts.")
+print("5: Se você ganhar/perder de outra forma você ganha/perde exatamente o que apostou.")
+print("Se divirta!")
 while d!=0:
     mj.clear()
     mc.clear()
-    print("Você: tem R$", d)
+    print("Você tem: R$", d)
     a=int(input('Aposte um valor inteiro: '))
     if a>d:
         print("Não aposte mais dinheiro do que tem!")
@@ -29,7 +36,7 @@ while d!=0:
     if sum(mj)>21:
         a=1
     if sum(mj)>21:
-        print("Você estorou", "com as cartas", mj, "!")
+        print("Você estourou", "com as cartas", mj, "!")
         d=d-a
         continue
     if sum(mj)==21:
@@ -45,7 +52,7 @@ while d!=0:
             if sum(mj)>21:
                 a=1
             if sum(mj)>21:
-                print("Você estorou", "com as cartas", mj, "!")
+                print("Você estourou", "com as cartas", mj, "!")
                 d=d-a
                 continue
             elif sum(mj)==21:
@@ -58,6 +65,14 @@ while d!=0:
     mc.append(cc1)
     mc.append(cc2)
     print("O croupier tem as cartas: ", mc, "totalizando: ", sum(mc))
+    while sum(mc)<17 and sum(mc)<sum(mj):
+        mc.append(random.choice(baralho))
+        print("O croupier tem as cartas: ", mc, "totalizando: ", sum(mc))
+    if sum(mc)>21:
+        print("O croupier estourou!")
+        d=d+a
+        print("Você ganhou!")
+        continue
     if sum(mc)>sum(mj):
         d=d-a
         print("Você perdeu.")
