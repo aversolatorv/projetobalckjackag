@@ -3,8 +3,8 @@ import random
 q=10 #figuradas valem 10
 j=10
 k=10
-a=11 #ás vale 11 se uma mão não estourar
-binicial=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
+A=11 #ás vale 11 se uma mão não estourar
+binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
 #bpaus=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♣
 #bcopas=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♥
 #bespadas=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♠
@@ -17,7 +17,8 @@ ls=["Sim","sim","s","S"] #lista com sim
 ln=["Não","não","nao","Nao","n","N"] #lista com nao
 d=1000 #dinheiro
 m="carta" #para entrar no loop
-ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser."
+i=2 # contador add cartas
+ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser." #texto para iniciantes
 print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 perg=input("Você sabe jogar Blackjack? ")
 while perg in ln:
@@ -47,7 +48,7 @@ print("9: Se quiser que o jogo pare, digite 'desisto' ou 'fim'.")
 print("Se divirta!")
 q=0 #para entrar no loop
 inp="s" #para entrar no loop
-while q<1 or q>10 or inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or inp=="n" or inp=="N":
+while q<1 or q>10 or inp in ln:
     inp='s'
     q=int(input("Com quantos baralhos quer jogar? "))
     if q>10:
@@ -58,9 +59,9 @@ while q<1 or q>10 or inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or i
         continue
     elif q>3:
         inp=input("O jogo pode ficar muito fácil, tem certeza de que quer continuar? ")
-    if inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or inp=="n" or inp=="N":
+    if inp in ln:
         continue
-    elif inp=="Sim" or inp=="sim" or inp=="s" or inp=="S":
+    elif inp in ls:
         break
 #Utilizamos varias versoes de 'Sim' e 'Nao' para facilitar para o usuario    
 
@@ -89,7 +90,7 @@ while d!=0:
     mj.append(random.choice(baralho))
     mj.append(random.choice(baralho))
     if sum(mj)>21:
-        a=1
+        A=1
     if sum(mj)>21:
         print("Você estourou com as cartas", mj, "!")
         d=d-a
@@ -102,10 +103,10 @@ while d!=0:
     m=input("Responda com 'continuar' ou 'carta': ")
     if m=="carta":
         while m!= "continuar":
-            m=input("Responda com 'continuar' ou 'carta': ")
+            #m=input("Responda com 'continuar' ou 'carta': ")
             mj.append(random.choice(baralho))
             if sum(mj)>21:
-                a=1
+                A=1
             if sum(mj)>21:
                 print("Você estourou com as cartas", mj, "totalizando:", sum(mj), "!")
                 d=d-a
@@ -115,6 +116,9 @@ while d!=0:
                 print("Parabéns, você ganhou um Blackjack!")
                 continue
             print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
+            m=input("Responda com 'continuar' ou 'carta': ")
+    if sum(mj)>21:
+      continue
     mc.append(random.choice(baralho))
     mc.append(random.choice(baralho))
     print("O croupier tem as cartas: ", mc, "totalizando: ", sum(mc))
