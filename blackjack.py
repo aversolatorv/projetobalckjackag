@@ -12,6 +12,16 @@ d=1000 #dinheiro
 m="carta" #para entrar no loop
 
 print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
+perg=input("Você sabe jogar Blackjack? ")
+while perg=="Não" or perg=="não" or perg=="nao" or perg=="Nao" or perg=="n" or perg=="N":
+    print("Sem problemas!")
+    print("Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado, se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser.")
+    abc=input("Entendeu? ")
+    if abc=="Sim" or abc=="sim" or abc=="s" or abc=="S":
+        break
+    else:
+        continue
+
 print("Regras e funcionamento:")
 print("1: Não aposte mais dinheiro do que tem!")
 print("2: Aposte valores inteiros!")
