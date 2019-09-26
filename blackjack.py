@@ -18,12 +18,17 @@ print("2: Aposte valores inteiros!")
 print("3: Se suas cartas iniciais somarem 21 pts, você automaticamente ganha 1,5x o que apostou.")
 print("4: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas até atingir no min 17 pts.")
 print("5: Se você ganhar/perder de outra forma você ganha/perde exatamente o que apostou.")
+print("6: Se quiser que o jogo pare, digite 'desisto'")
 print("Se divirta!")
 while d!=0:
     mj.clear()
     mc.clear()
     print("Você tem: R$", d)
-    a=int(input('Aposte um valor inteiro: '))
+    b=(input('Aposte um valor inteiro: '))
+    if b=="desisto":
+        print("Que pena!")
+        break
+    a=int(b)
     if a>d:
         print("Não aposte mais dinheiro do que tem!")
         print("Você foi penalizado em: R$", 0.1*d, "por tentar trapacear!")
@@ -84,6 +89,7 @@ while d!=0:
     elif sum(mj)==sum(mc):
         print("É um empate!")
         continue
-print("Seu dinheiro acabou!")
+if d==0:    
+    print("Seu dinheiro acabou!")
 print("Obrigado por jogar nosso jogo!")
 print("Volte sempre!")
