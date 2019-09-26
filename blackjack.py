@@ -10,7 +10,7 @@ mj=[] #mão jogador
 mc=[] #mão croupier
 d=1000 #dinheiro
 m="carta" #para entrar no loop
-
+ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser."
 print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 perg=input("Você sabe jogar Blackjack? ")
 while perg=="Não" or perg=="não" or perg=="nao" or perg=="Nao" or perg=="n" or perg=="N":
@@ -27,9 +27,9 @@ print("1: Não aposte mais dinheiro do que tem!")
 print("2: Aposte valores inteiros!")
 print("3: Se suas cartas iniciais somarem 21 pontos, você automaticamente ganha 1,5x o que apostou.")
 print("4: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas até atingir no mínimo 17 pontos.")
-print("5: Para razões de desempate: ♣>♡>♠>♢") #Feature livre implementada por nós
+print("5: Para razões de desempate: ♣ > ♡ > ♠ > ♢") #Feature livre implementada por nós
 print("6: Se você ganhar/perder de outra forma você ganha/perde exatamente o que apostou.")
-print("7: Se quiser que o jogo pare, digite 'desisto'.")
+print("7: Se quiser que o jogo pare, digite 'desisto ou fim'.")
 
 print("Se divirta!")
 q=0 #para entrar no loop
@@ -57,7 +57,13 @@ while d!=0:
     mc.clear()
     print("Você tem: R$", d)
     b=(input('Aposte um valor inteiro: '))
-    if b=="desisto":
+    if b=="ajuda" or b=="Ajuda":
+        print(ayuda)
+        continue
+    if b=="baralho" or b=="baralhos" or b=="Baralho" or b=="Baralhos":
+        print("Você está jogando com", q, "baralho(s).")
+        continue
+    if b=="desisto" or b=="fim":
         print("Que pena!")
         break
     a=int(b)
