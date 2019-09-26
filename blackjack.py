@@ -15,6 +15,8 @@ mj=[] #mão jogador
 mc=[] #mão croupier
 ls=["Sim","sim","s","S"] #lista com sim
 ln=["Não","não","nao","Nao","n","N"] #lista com nao
+lcar=["carta", "cartas", "car", "Carta", "Cartas"]
+lcon=["continuar", "con", "Continuar"]
 d=1000 #dinheiro
 m="carta" #para entrar no loop
 i=2 # contador add cartas
@@ -58,7 +60,7 @@ while q<1 or q>10 or inp in ln:
         print("Você não digitou um valor válido.")
         continue
     elif q>3:
-        inp=input("O jogo pode ficar muito fácil, tem certeza de que quer continuar? ")
+        inp=input("O jogo funciona optimamente com menos baralhos, tem certeza de que quer continuar? ")
     if inp in ln:
         continue
     elif inp in ls:
@@ -101,8 +103,8 @@ while d!=0:
         continue
     print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
     m=input("Responda com 'continuar' ou 'carta': ")
-    if m=="carta":
-        while m!= "continuar":
+    if m in lcar:
+        while m not in lcon:
             #m=input("Responda com 'continuar' ou 'carta': ")
             mj.append(random.choice(baralho))
             if sum(mj)>21:
