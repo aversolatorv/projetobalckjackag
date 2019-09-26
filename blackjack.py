@@ -19,7 +19,7 @@ while d!=0:
     a=int(input('Aposte um valor inteiro: '))
     if a>d:
         print("Não aposte mais dinheiro do que tem!")
-        print("Você foi penalizado em: ", 0.1*d, "por tentar trapacear!")
+        print("Você foi penalizado em R$:", 0.1*d, "por tentar trapacear!")
         d=d-(0.1*d)
         continue
     cj1=random.choice(baralho) #cj = carta do jogador
@@ -34,7 +34,7 @@ while d!=0:
         continue
     if sum(mj)==21:
         d=d+((1.5)*a)
-        print("Parabéns, você ganhou um Blackjack ", "com as cartas", mj, "!")
+        print("Parabéns, você ganhou um Blackjack com as cartas", mj, "!")
         continue
     print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
     m=input("Responda com 'continuar' ou 'carta': ")
@@ -66,5 +66,9 @@ while d!=0:
         d=d+a
         print("Você ganhou!")
         continue
-        
-    
+    elif sum(mj)==sum(mc):
+        print("É um empate!")
+        continue
+print("Seu dinheiro acabou!")
+print("Obrigado por jogar nosso jogo!")
+print("Volte sempre!")
