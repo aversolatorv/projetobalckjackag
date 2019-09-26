@@ -84,6 +84,9 @@ while d!=0:
         print("Que pena!")
         break
     a=int(b)
+    if a<1:
+      print("Você apostou um valor inválido!")
+      continue
     if a>d:
         print("Não aposte mais dinheiro do que tem!")
         print("Você foi penalizado em: R$", 0.1*d, "por tentar trapacear!")
