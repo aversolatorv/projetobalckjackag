@@ -21,16 +21,21 @@ print("5: Se você ganhar/perder de outra forma você ganha/perde exatamente o q
 print("6: Se quiser que o jogo pare, digite 'desisto'.")
 print("Se divirta!")
 q=0
-while q==0 or q>10:
+inp="s"
+while q<1 or q>10 or inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or inp=="n" or inp=="N":
     q=int(input("Com quantos baralhos quer jogar? "))
     if q>10:
         print("O máximo são 10 baralhos!")
-    elif q>5:
+        continue
+    elif q<1:
+        print("Você não digitou um valor válido.")
+        continue
+    elif q>3:
         print("O jogo pode ficar muito fácil, tem certeza de que quer continuar?")
         inp=input("Sim/Não: ")
-    if inp=="Não":
+    if inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or inp=="n" or inp=="N":
         continue
-    elif inp=="Sim":
+    elif inp=="Sim" or inp=="sim" or inp=="s" or inp=="S":
         break
 baralho=baralho*q
 while d!=0:
