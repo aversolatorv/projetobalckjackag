@@ -9,24 +9,30 @@ binicial=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos 
 #bcopas=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♥
 #bespadas=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♠
 #bouros=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♦
-baralho=(binicial) #nao tinhamos certeza se podemos multiplicar uma lista ja multiplicada
+baralho=(binicial)
 #baralho=bpaus+bcopas+bespadas+bouros
 mj=[] #mão jogador
 mc=[] #mão croupier
+ls=["Sim","sim","s","S"] #lista com sim
+ln=["Não","não","nao","Nao","n","N"] #lista com nao
 d=1000 #dinheiro
 m="carta" #para entrar no loop
 ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser."
 print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 perg=input("Você sabe jogar Blackjack? ")
-while perg=="Não" or perg=="não" or perg=="nao" or perg=="Nao" or perg=="n" or perg=="N":
+while perg in ln:
     print("Sem problemas!")
     print(ayuda)
     abc=input("Entendeu? ")
-    if abc=="Sim" or abc=="sim" or abc=="s" or abc=="S":
+    if abc in ls:
         break
     else:
         continue
-
+'''
+if abc in ls:
+  abcd=input("Você gostaria de jogar uma partida teste com tutorial?")
+  if abcd in ln:
+'''
 print("Regras e funcionamento:")
 print("1: Não aposte mais dinheiro do que tem!")
 print("2: Aposte valores inteiros!")
