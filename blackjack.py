@@ -15,11 +15,11 @@ print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 while d!=0:
     mj.clear()
     mc.clear()
-    print("Você tem R$ ", d)
+    print("Você: tem R$", d)
     a=int(input('Aposte um valor inteiro: '))
     if a>d:
         print("Não aposte mais dinheiro do que tem!")
-        print("Você foi penalizado em R$:", 0.1*d, "por tentar trapacear!")
+        print("Você foi penalizado em: R$", 0.1*d, "por tentar trapacear!")
         d=d-(0.1*d)
         continue
     cj1=random.choice(baralho) #cj = carta do jogador
