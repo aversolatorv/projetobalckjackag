@@ -15,7 +15,7 @@ print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
 perg=input("Você sabe jogar Blackjack? ")
 while perg=="Não" or perg=="não" or perg=="nao" or perg=="Nao" or perg=="n" or perg=="N":
     print("Sem problemas!")
-    print("Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado, se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser.")
+    print("Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser.")
     abc=input("Entendeu? ")
     if abc=="Sim" or abc=="sim" or abc=="s" or abc=="S":
         break
@@ -35,6 +35,7 @@ print("Se divirta!")
 q=0 #para entrar no loop
 inp="s" #para entrar no loop
 while q<1 or q>10 or inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or inp=="n" or inp=="N":
+    inp='s'
     q=int(input("Com quantos baralhos quer jogar? "))
     if q>10:
         print("O máximo são 10 baralhos!")
@@ -43,8 +44,7 @@ while q<1 or q>10 or inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or i
         print("Você não digitou um valor válido.")
         continue
     elif q>3:
-        print("O jogo pode ficar muito fácil, tem certeza de que quer continuar?")
-        inp=input("Sim/Não: ")
+        inp=input("O jogo pode ficar muito fácil, tem certeza de que quer continuar? ")
     if inp=="Não" or inp=="não" or inp=="nao" or inp=="Nao" or inp=="n" or inp=="N":
         continue
     elif inp=="Sim" or inp=="sim" or inp=="s" or inp=="S":
