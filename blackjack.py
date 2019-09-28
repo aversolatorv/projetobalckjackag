@@ -1,14 +1,19 @@
 import random
-
+'''
+A fazeres:
+Nome das cartas (A,J,K,Q)
+Partida teste para iniciantes
+As trocando de valor
+'''
 q=10 #figuradas valem 10
 j=10
 k=10
 A=11 #ás vale 11 se uma mão não estourar
 binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
-#bpaus=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♣
-#bcopas=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♥
-#bespadas=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♠
-#bouros=[a, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] ♦
+#bpaus={"A♣":A, "2♣":2, "3♣":3, "4♣":4, "5♣":5, "6♣":6, "7♣":7, "8♣":8, "9♣":9, "10♣":10, "Q♣":q, "J♣":j, "K♣":k} #♣
+#bcopas={"A♥":A, "2♥":2, "3♥":3, "4♥":4, "5♥":5, "6♥":6, "7♥":7, "8♥":8, "9♥":9, "10♥":10, "Q♥":q, "J♥":j, "K♥":k} #♥
+#bespadas={"A♠":A, "2♠":2, "3♠":3, "4♠":4, "5♠":5, "6♠":6, "7♠":7, "8♠":8, "9♠":9, "10♠":10, "Q♠":q, "J♠":j, "K♠":k} #♠
+#bouros={"A♦":A, "2♦":2, "3♦":3, "4♦":4, "5♦":5, "6♦":6, "7♦":7, "8♦":8, "9♦":9, "10♦":10, "Q♦":q, "J♦":j, "K♦":k} #♦
 baralho=(binicial)
 #baralho=bpaus+bcopas+bespadas+bouros
 mj=[] #mão jogador
@@ -21,7 +26,7 @@ d=1000 #dinheiro
 m="carta" #para entrar no loop
 i=2 # contador add cartas
 ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser." #texto para iniciantes
-print("♠♥♣♦ Bem-vindo à mesa de Blackjack! ♠♥♣♦")
+print("♠ ♥ ♣ ♦ Bem-vindo à mesa de Blackjack! ♠ ♥ ♣ ♦")
 perg=input("Você sabe jogar Blackjack? ")
 while perg in ln:
     print("Sem problemas!")
@@ -118,7 +123,7 @@ while d!=0:
                 break
             elif sum(mj)==21:
                 d=d+((1.5)*a)
-                print("Parabéns, você ganhou um Blackjack!")
+                print("Parabéns, você ganhou um Blackjack com as cartas", mj, "!")
                 break
             print("Você tem as cartas: ", mj, "totalizando: ", sum(mj), ", você gostaria de mais uma carta ou quer continuar?")
             m=input("Responda com 'continuar' ou 'carta': ")
