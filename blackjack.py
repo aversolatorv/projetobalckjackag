@@ -9,7 +9,11 @@ q=10 #figuradas valem 10
 j=10
 k=10
 A=11 #ás vale 11 se uma mão não estourar
-binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
+binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] #um baralho tem 4 conjuntos desses
+#b1=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
+#b2=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
+#b3=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
+#b4=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
 #bpaus={"A♣":A, "2♣":2, "3♣":3, "4♣":4, "5♣":5, "6♣":6, "7♣":7, "8♣":8, "9♣":9, "10♣":10, "Q♣":q, "J♣":j, "K♣":k} #♣
 #bcopas={"A♥":A, "2♥":2, "3♥":3, "4♥":4, "5♥":5, "6♥":6, "7♥":7, "8♥":8, "9♥":9, "10♥":10, "Q♥":q, "J♥":j, "K♥":k} #♥
 #bespadas={"A♠":A, "2♠":2, "3♠":3, "4♠":4, "5♠":5, "6♠":6, "7♠":7, "8♠":8, "9♠":9, "10♠":10, "Q♠":q, "J♠":j, "K♠":k} #♠
@@ -24,6 +28,8 @@ lcar=["carta", "cartas", "car", "Carta", "Cartas"]
 lcon=["continuar", "con", "Continuar"]
 d=1000 #dinheiro
 m="carta" #para entrar no loop
+abc="n"
+jogadores=[0,5,20]
 i=2 # contador add cartas
 ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser." #texto para iniciantes
 print("♠ ♥ ♣ ♦ Bem-vindo à mesa de Blackjack! ♠ ♥ ♣ ♦")
@@ -36,11 +42,11 @@ while perg in ln:
         break
     else:
         continue
-''' 
-if abc in ls: #Feature livre
-  abcd=input("Você gostaria de jogar uma partida teste com tutorial?")
-  if abcd in ln:
-'''
+
+#if abc in ls: #Feature livre
+#  abcd=input("Você gostaria de jogar uma partida teste com tutorial? ")
+#  if abcd in ls:
+
 print("Regras e funcionamento:")
 print("1: Não aposte mais dinheiro do que tem!")
 print("2: Aposte valores inteiros!")
@@ -53,6 +59,26 @@ print("8: Se quiser lembrar com quantos baralhos está jogando, digite 'baralho(
 print("9: Se quiser que o jogo pare, digite 'desisto' ou 'fim'.")
 
 print("Se divirta!")
+qtj=0
+while qtj<1 or qtj>3:
+    qtj=int(input("Quantos jogadores participarão? "))
+    if qtj>3:
+        print("Nosso jogo só suporta até 3 jogadores!")
+        continue
+    elif qtj<1:
+        print("Você não digitou um valor válido.")
+        continue
+    nj=qtj
+i=0
+while nj>0:
+  print("Insira o nome do jogador", nj)
+  japp=(input())
+  jogadores[i]=japp
+  if jogadores[0]==jogadores[1] or jogadores[0]==jogadores[2] or jogadores[1]==jogadores[2]:
+    print("Por favor use nomes diferentes!")
+    continue
+  nj-=1
+  i+=1
 q=0 #para entrar no loop
 inp="s" #para entrar no loop
 while q<1 or q>10 or inp in ln:
@@ -69,8 +95,7 @@ while q<1 or q>10 or inp in ln:
     if inp in ln:
         continue
     elif inp in ls:
-        break
-#Utilizamos varias versoes de 'Sim' e 'Nao' para facilitar para o usuario    
+        break  
 
 baralho=baralho*q
 #print(baralho)
