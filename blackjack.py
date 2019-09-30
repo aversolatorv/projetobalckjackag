@@ -4,12 +4,14 @@ A fazeres:
 Nome das cartas (A,J,K,Q)
 Partida teste para iniciantes
 As trocando de valor
+Desempate
 '''
 q=10 #figuradas valem 10
 j=10
 k=10
 A=11 #ás vale 11 se uma mão não estourar
-binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k] #um baralho tem 4 conjuntos desses
+binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
+naipes=["♣","♥","♠","♦"]
 #b1=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
 #b2=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
 #b3=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
@@ -70,7 +72,7 @@ while qtj<1 or qtj>3:
         continue
     nj=qtj
 i=0
-while nj>0:
+while nj>0 and qtj != 1:
   print("Insira o nome do jogador", nj)
   japp=(input())
   jogadores[i]=japp
@@ -124,8 +126,9 @@ while d!=0:
         continue
     mj.append(random.choice(baralho))
     mj.append(random.choice(baralho))
-    if sum(mj)>21:
-        A=1
+    if sum(mj)>21 and A in mj:
+        subs=mj.index(A)
+        mj[subs]=1
     if sum(mj)>21:
         print("Você estourou com as cartas", mj, "!")
         d=d-a
@@ -140,8 +143,9 @@ while d!=0:
         while m not in lcon:
             #m=input("Responda com 'continuar' ou 'carta': ")
             mj.append(random.choice(baralho))
-            if sum(mj)>21:
-                A=1
+            if sum(mj)>21 and A in mj:
+              subs=mj.index(A)
+              mj[subs]=1
             if sum(mj)>21:
                 print("Você estourou com as cartas", mj, "totalizando:", sum(mj), "!")
                 d=d-a
@@ -162,6 +166,9 @@ while d!=0:
     while sum(mc)<17 and sum(mc)<sum(mj):
         mc.append(random.choice(baralho))
         print("O croupier tem as cartas: ", mc, "totalizando: ", sum(mc))
+    if sum(mc)>21 and A in mc:
+        subs=mc.index(A)
+        mc[subs]=1
     if sum(mc)>21:
         print("O croupier estourou!")
         d=d+a
