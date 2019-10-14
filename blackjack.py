@@ -1,28 +1,23 @@
 import random
+import os
 '''
 A fazeres:
 Nome das cartas (A,J,K,Q)
 Partida teste para iniciantes
-As trocando de valor
 Desempate
 '''
+
 q=10 #figuradas valem 10
 j=10
 k=10
 A=11 #ás vale 11 se uma mão não estourar
 binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
 naipes=["♣","♥","♠","♦"]
-#b1=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
-#b2=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
-#b3=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
-#b4=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]
-#bpaus={"A♣":A, "2♣":2, "3♣":3, "4♣":4, "5♣":5, "6♣":6, "7♣":7, "8♣":8, "9♣":9, "10♣":10, "Q♣":q, "J♣":j, "K♣":k} #♣
-#bcopas={"A♥":A, "2♥":2, "3♥":3, "4♥":4, "5♥":5, "6♥":6, "7♥":7, "8♥":8, "9♥":9, "10♥":10, "Q♥":q, "J♥":j, "K♥":k} #♥
-#bespadas={"A♠":A, "2♠":2, "3♠":3, "4♠":4, "5♠":5, "6♠":6, "7♠":7, "8♠":8, "9♠":9, "10♠":10, "Q♠":q, "J♠":j, "K♠":k} #♠
-#bouros={"A♦":A, "2♦":2, "3♦":3, "4♦":4, "5♦":5, "6♦":6, "7♦":7, "8♦":8, "9♦":9, "10♦":10, "Q♦":q, "J♦":j, "K♦":k} #♦
 baralho=(binicial)
 #baralho=bpaus+bcopas+bespadas+bouros
 mj=[] #mão jogador
+mj2=[]
+mj3=[]
 mc=[] #mão croupier
 ls=["Sim","sim","s","S"] #lista com sim
 ln=["Não","não","nao","Nao","n","N"] #lista com nao
@@ -32,7 +27,7 @@ d=1000 #dinheiro
 m="carta" #para entrar no loop
 abc="n"
 jogadores=[0,5,20]
-i=2 # contador add cartas
+limpa = lambda: os.system('cls')
 ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser." #texto para iniciantes
 print("♠ ♥ ♣ ♦ Bem-vindo à mesa de Blackjack! ♠ ♥ ♣ ♦")
 perg=input("Você sabe jogar Blackjack? ")
@@ -45,20 +40,15 @@ while perg in ln:
     else:
         continue
 
-#if abc in ls: #Feature livre
-#  abcd=input("Você gostaria de jogar uma partida teste com tutorial? ")
-#  if abcd in ls:
-
-print("Regras e funcionamento:")
+print("Regras e funcionamento adicionais:")
 print("1: Não aposte mais dinheiro do que tem!")
 print("2: Aposte valores inteiros!")
 print("3: Se suas cartas iniciais somarem 21 pontos, você automaticamente ganha 1,5x o que apostou.")
 print("4: Se você ganhar/perder de outra forma você ganha/perde exatamente o que apostou.")
 print("5: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas até atingir no mínimo 17 pontos.")
-print("6: Para razões de desempate: ♣ > ♡ > ♠ > ♢") #Feature livre implementada por nós
-print("7: Se quiser lembrar como jogar Blackjack, digite 'ajuda'")
-print("8: Se quiser lembrar com quantos baralhos está jogando, digite 'baralho(s)'")
-print("9: Se quiser que o jogo pare, digite 'desisto' ou 'fim'.")
+print("6: Se quiser lembrar como jogar Blackjack, digite 'ajuda'")
+print("7: Se quiser lembrar com quantos baralhos está jogando, digite 'baralho(s)'")
+print("8: Se quiser que o jogo pare, digite 'desisto' ou 'fim'.")
 
 print("Se divirta!")
 qtj=0
@@ -102,6 +92,7 @@ while q<1 or q>10 or inp in ln:
 baralho=baralho*q
 #print(baralho)
 while d!=0:
+    limpa()
     mj.clear()
     mc.clear()
     print("Você tem: R$", d)
