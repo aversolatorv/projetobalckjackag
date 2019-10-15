@@ -1,11 +1,11 @@
 import random
 import os
 '''
-A fazeres:
-Nome das cartas (A,J,K,Q)
-Partida teste para iniciantes
-Desempate
+Andre Versolatto - andrerv@al.insper.edu.br
+Gabriel Tkacz - gabrielmt2@al.insper.edu.br
 '''
+#Nome das cartas (A,J,K,Q)
+
 
 q=10 #figuradas valem 10
 j=10
@@ -14,20 +14,17 @@ A=11 #ás vale 11 se uma mão não estourar
 binicial=[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, q, j, k]*4 #um baralho tem 4 conjuntos desses
 naipes=["♣","♥","♠","♦"]
 baralho=(binicial)
-#baralho=bpaus+bcopas+bespadas+bouros
 mj=[] #mão jogador
-mj2=[]
-mj3=[]
 mc=[] #mão croupier
-ls=["Sim","sim","s","S"] #lista com sim
-ln=["Não","não","nao","Nao","n","N"] #lista com nao
-lcar=["carta", "cartas", "car", "Carta", "Cartas"]
-lcon=["continuar", "con", "Continuar"]
+ls=["Sim","sim","s","S"] #lista com variacoes de sim
+ln=["Não","não","nao","Nao","n","N"] #lista com variacoes de nao
+lcar=["carta", "cartas", "car", "Carta", "Cartas", "Car"] #lista com variacoes de carta
+lcon=["continuar", "con", "Continuar", "Con"] #lista com variacoes de continuar
 d=1000 #dinheiro
+ldes=["desisto","fim"]
 m="carta" #para entrar no loop
 abc="n"
-jogadores=[0,5,20]
-limpa = lambda: os.system('cls')
+limpa = lambda: os.system('cls') #para limpar console
 ayuda="Inicialmente, você apostará um valor. Após isso, você receberá duas cartas. Estas cartas terão um valor somado; se tal soma passar de 21, você estourou e perdeu. (Cartas numéricas valem seu próprio número, cartas figuradas valem 10, e o Ás vale 11. Entretanto, se sua mão valer mais de 21, mas você tem um Ás, o Ás passa a valer 1). Ganha quem tiver o número mais alto perto de 21, sem ultrapassa-lo. Se suas cartas iniciais tiverem um valor baixo, você pode pedir mais cartas quanto quiser." #texto para iniciantes
 print("♠ ♥ ♣ ♦ Bem-vindo à mesa de Blackjack! ♠ ♥ ♣ ♦")
 perg=input("Você sabe jogar Blackjack? ")
@@ -36,6 +33,7 @@ while perg in ln:
     print(ayuda)
     abc=input("Entendeu? ")
     if abc in ls:
+        limpa()
         break
     else:
         continue
@@ -49,13 +47,15 @@ print("5: Enquanto a mão do croupier for menor que a sua, ele vai puxar cartas 
 print("6: Se quiser lembrar como jogar Blackjack, digite 'ajuda'")
 print("7: Se quiser lembrar com quantos baralhos está jogando, digite 'baralho(s)'")
 print("8: Se quiser que o jogo pare, digite 'desisto' ou 'fim'.")
-
 print("Se divirta!")
-qtj=0
-while qtj<1 or qtj>3:
+print(" ")
+
+
+'''qtj=0 #para entrar no loop
+while qtj<1 or qtj>2:
     qtj=int(input("Quantos jogadores participarão? "))
-    if qtj>3:
-        print("Nosso jogo só suporta até 3 jogadores!")
+    if qtj>2:
+        print("Nosso jogo só suporta até 2 jogadores!")
         continue
     elif qtj<1:
         print("Você não digitou um valor válido.")
@@ -66,16 +66,20 @@ while nj>0 and qtj != 1:
   print("Insira o nome do jogador", nj)
   japp=(input())
   jogadores[i]=japp
-  if jogadores[0]==jogadores[1] or jogadores[0]==jogadores[2] or jogadores[1]==jogadores[2]:
+  if jogadores[0]==jogadores[1]:
     print("Por favor use nomes diferentes!")
     continue
   nj-=1
-  i+=1
+  i+=1'''
 q=0 #para entrar no loop
 inp="s" #para entrar no loop
 while q<1 or q>10 or inp in ln:
     inp='s'
-    q=int(input("Com quantos baralhos quer jogar? "))
+    des=input("Com quantos baralhos quer jogar? ")
+    if des in ldes:
+        d=0
+        break
+    q=int(des)
     if q>10:
         print("O máximo são 10 baralhos!")
         continue
@@ -89,21 +93,21 @@ while q<1 or q>10 or inp in ln:
     elif inp in ls:
         break  
 
-baralho=baralho*q
-#print(baralho)
+baralho=baralho*q #multiplos baralhos
 while d!=0:
-    limpa()
     mj.clear()
     mc.clear()
     print("Você tem: R$", d)
     b=(input('Aposte um valor inteiro: '))
     if b=="ajuda" or b=="Ajuda":
+        limpa()
         print(ayuda)
         continue
     if b=="baralho" or b=="baralhos" or b=="Baralho" or b=="Baralhos":
+        limpa()
         print("Você está jogando com", q, "baralho(s).")
         continue
-    if b=="desisto" or b=="fim":
+    if b in ldes:
         print("Que pena!")
         break
     a=int(b)
@@ -176,7 +180,7 @@ while d!=0:
     elif sum(mj)==sum(mc):
         print("É um empate!")
         continue
-if d==0:    
+if d==0 and des not in ldes:
     print("Seu dinheiro acabou!")
 print("Obrigado por jogar nosso jogo!")
 print("Volte sempre!")
