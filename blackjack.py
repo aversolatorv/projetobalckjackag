@@ -195,14 +195,11 @@ while d>0:
         if sum(mc)>sum(ms):
             d=d-a
             print("Você perdeu seu split.")
-            continue
         if sum(mj)>sum(ms):
             d=d+a
             print("Você ganhou seu split!")
-            continue
         if sum(mj)==sum(ms):
             print("Seu split é um empate!")
-            continue
     if sum(mc)>sum(mj):
         d=d-a
         print("Você perdeu.")
