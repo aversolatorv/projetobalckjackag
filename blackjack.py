@@ -128,7 +128,7 @@ while d>0:
                 d=d+((1.5)*a)
                 print("Parabéns, você ganhou seu split com um Blackjack com as cartas", ms, "!")
             print("No seu split, você tem as cartas: ", ms, "totalizando: ", sum(ms), ", você gostaria de mais uma carta ou quer continuar?")
-            ms=input("Responda com 'continuar' ou 'carta': ")
+            resps=input("Responda com 'continuar' ou 'carta': ")
             while ms not in lcon:
                 ms.append(random.choice(baralho))
                 if sum(ms)>21 and A in ms:
