@@ -143,7 +143,7 @@ while d>0:
                     print("Parabéns, você ganhou seu split com um Blackjack com as cartas", ms, "!")
                     break
                 print("Você tem as cartas: ", ms, "no seu split, totalizando: ", sum(ms), ", você gostaria de mais uma carta ou quer continuar?")
-                m=input("Responda com 'continuar' ou 'carta': ")
+                resps=input("Responda com 'continuar' ou 'carta': ")
     if sum(mj)>21 and A in mj:
         subs=mj.index(A)
         mj[subs]=1
